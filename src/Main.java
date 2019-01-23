@@ -38,6 +38,8 @@ public class Main {
             output = numEntryFloor;
         } else if (vehicleType == "V" && numEntryFloor > numTotalFloors.get(0)) {
             output = numTotalFloors.get(1);
+        } else {
+            output = 0;
         }
 
         // Data Testing
