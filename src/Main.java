@@ -46,7 +46,7 @@ public class Main {
     }
 
     /*
-    Validates if entered vehicle type is correct
+    Checks if entered vehicle type is correct
      */
     private static String checkVehicleType (String vehicleType) {
         if (vehicleType == "P" || vehicleType == "p" || vehicleType == "D" || vehicleType == "d") {
@@ -60,6 +60,20 @@ public class Main {
         }
     }
 
+    /*
+    Checks if a entry point exists on a given parking lot floor
+     */
+    private static boolean isEntryFloorValid (int entryPoint, ArrayList <Integer> totalNumOfFloors) {
+        if (totalNumOfFloors.contains(entryPoint)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /*
+    Checks if lowest floor number is lower than the highest floor number
+     */
     private static boolean isLowestFloorValid (int lowestFloor, int highestFloor) {
         if (lowestFloor <= highestFloor) {
             return true;
