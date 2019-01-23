@@ -3,17 +3,14 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        int lowestFloor = 7;
-        int highestFloor = 8;
+        int lowestFloor = -2;
+        int highestFloor = 5;
         ArrayList<Integer> totalNumOfFloors;
-        int entryFloor = 8;
-        String vehicleType = "V";
-        String output;
+        int entryFloor = -2;
+        String vehicleType = "";                                                   // "P" or "D" for petrol/diesel, "E" for electric, "V' for van
 
-        /*
-        Prints the output message
-         */
-        System.out.println(output);
+        totalNumOfFloors = fillListWithFloorNumbers (lowestFloor, highestFloor);    // if lowest floor number > highest, switches places
+        System.out.println(printOutput (totalNumOfFloors, entryFloor, vehicleType));
     }
 
     /*
@@ -80,6 +77,9 @@ public class Main {
         }
     }
 
+    /*
+    checks if the given floor is the highest in the parking lot
+     */
     private static boolean isFloorHighestInLot(int floor, ArrayList<Integer> totalNumOfFloors) {
         if (floor == totalNumOfFloors.get(totalNumOfFloors.size() - 1)) {
             return true;
@@ -88,6 +88,9 @@ public class Main {
         }
     }
 
+    /*
+    checks if the given floor is the lowest in the parking lot
+     */
     private static boolean isFloorLowestInLot(int floor, ArrayList<Integer> totalNumOfFloors) {
         if (floor == totalNumOfFloors.get(0)) {
             return true;
@@ -96,21 +99,24 @@ public class Main {
         }
     }
 
+    /*
+    prints output by using all the inputs and validation
+     */
     private static String printOutput(ArrayList<Integer> numOfTotalFloors, int entryFloor, String vehicleType) {
         if (isEntryFloorValid(entryFloor, numOfTotalFloors) && checkVehicleType(vehicleType) != "Error") {
-            if ((vehicleType == "P") ||
-                    (vehicleType == "E" && isFloorHighestInLot(entryFloor, numOfTotalFloors)) ||
-                    (vehicleType == "V" && isFloorLowestInLot(entryFloor, numOfTotalFloors))) {
+            if ((checkVehicleType(vehicleType) == "P") ||
+                    (checkVehicleType(vehicleType) == "E" && isFloorHighestInLot(entryFloor, numOfTotalFloors)) ||
+                    (checkVehicleType(vehicleType) == "V" && isFloorLowestInLot(entryFloor, numOfTotalFloors))) {
                 return Integer.toString(entryFloor);
-            } else if (vehicleType == "E" && !isFloorHighestInLot(entryFloor, numOfTotalFloors)) {
+            } else if (checkVehicleType(vehicleType) == "E" && !isFloorHighestInLot(entryFloor, numOfTotalFloors)) {
                 return Integer.toString(numOfTotalFloors.get(numOfTotalFloors.size() - 2));
             } else {
                 return Integer.toString(numOfTotalFloors.get(1));
             }
         } else if (!isEntryFloorValid(entryFloor, numOfTotalFloors)) {
-            return "Error. You can'e enter the parking lot to a floor that doesn't exist.";
+            return "Error. You can't enter the parking lot to a floor that doesn't exist.";
         } else {
-            return "Error. The vehicle type you're entering with is not compatible with the parking lot.";
+            return "Error. The vehicle type you're entering with is not recognized by the boom barrier.";
         }
     }
 }
