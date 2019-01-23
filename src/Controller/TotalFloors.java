@@ -9,13 +9,14 @@ public class TotalFloors {
     public TotalFloors(int lowerFloor, int upperFloor) {
         this.lowerFloor = lowerFloor;
         this.upperFloor = upperFloor;
-        int floorArrayMin = this.lowerFloor;
-        int floorArrayMax = this.upperFloor;
+        int floorArrayMin = lowerFloor;
+        int floorArrayMax = upperFloor;
         int floorArrayCount = floorArrayMax - floorArrayMin + 1;
         int[] floorArray = new int [floorArrayCount];
         for (int i = 0; i< floorArrayCount; i++, floorArrayMin++) {
             floorArray[i] = floorArrayMin;
         }
+        this.floorArray = floorArray;
     }
 
     public int getLowerFloor () {
@@ -36,5 +37,9 @@ public class TotalFloors {
 
     public int[] getFloorArray () {
         return floorArray;
+    }
+
+    public void setFloorArray (int[] floorArray) {
+        this.floorArray = floorArray;
     }
 }
