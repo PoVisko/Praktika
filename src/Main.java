@@ -6,8 +6,8 @@ public class Main {
         int lowestFloor = -2;
         int highestFloor = 8;
         ArrayList <Integer> totalNumOfFloors = new ArrayList<>();
-        int entryFloor = 8;
-        String vehicleType = "V";
+        int entryFloor = -3;
+        String vehicleType = "Z";
         String output;
 
         /*
@@ -40,8 +40,10 @@ public class Main {
                     entryFloor > totalNumOfFloors.get(0) &&
                     entryFloor <= totalNumOfFloors.get(totalNumOfFloors.size() - 1)) {
                 output = Integer.toString(totalNumOfFloors.get(1));
+            } else if (vehicleType != "P" && vehicleType != "E" && vehicleType != "V") {
+                output = "The type of vehicle you're using isn't suitable for our parking lot. Sorry.";
             } else {
-                output = "You can't enter the lot because the floor you're entering to does no exist.";
+                output = "You can't enter the lot because the floor you're entering to does not exist.";
             }
         } else if (lowestFloor == highestFloor) {
             output = Integer.toString(entryFloor);
