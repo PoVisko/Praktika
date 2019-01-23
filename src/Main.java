@@ -3,8 +3,8 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        int lowestFloor = -2;
-        int highestFloor = 8;
+        int lowestFloor = 8;
+        int highestFloor = -3;
         ArrayList <Integer> totalNumOfFloors = new ArrayList<>();
         int entryFloor = -3;
         String vehicleType = "Z";
@@ -25,7 +25,9 @@ public class Main {
         /*
         Checks the closest parking space depending on vehicle type
          */
-        if (entryFloor >= totalNumOfFloors.get(0) &&
+        if (lowestFloor > highestFloor) {
+            output = "You can't enter the lot because the floor you're entering to does not exist.";
+        } else if (entryFloor >= totalNumOfFloors.get(0) &&
                 entryFloor <= totalNumOfFloors.get(totalNumOfFloors.size() - 1)) {
             if (lowestFloor < highestFloor) {
                 if (vehicleType == "P") {
@@ -41,10 +43,8 @@ public class Main {
                 } else {
                     output = "The type of vehicle you're using isn't suitable for our parking lot. Sorry.";
                 }
-            } else if (lowestFloor == highestFloor) {
-                output = Integer.toString(entryFloor);
             } else {
-                output = "The lowest floor of your building can't be higher than the highest floor.";
+                output = Integer.toString(entryFloor);
             }
         } else {
             output = "You can't enter the lot because the floor you're entering to does not exist.";
