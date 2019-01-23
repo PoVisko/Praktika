@@ -6,7 +6,7 @@ public class Main {
         int lowestFloor = -3;
         int highestFloor = 8;
         ArrayList <Integer> totalNumOfFloors = new ArrayList<>();
-        int entryFloor = 9;
+        int entryFloor = 0;
         String vehicleType = "Z";
         String output;
 
@@ -28,7 +28,8 @@ public class Main {
         if (lowestFloor > highestFloor) {
             output = "The lowest floor of the parking lot can't be higher than the highest floor.";
         } else if (entryFloor >= totalNumOfFloors.get(0) &&
-                entryFloor <= totalNumOfFloors.get(totalNumOfFloors.size() - 1)) {
+                entryFloor <= totalNumOfFloors.get(totalNumOfFloors.size() - 1) &&
+                entryFloor != 0) {
             if (lowestFloor < highestFloor) {
                 if (vehicleType == "P") {
                     output = Integer.toString(entryFloor);
