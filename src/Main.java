@@ -1,45 +1,52 @@
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.stream.IntStream;
-
 
 public class Main {
 
     public static void main(String[] args) {
-        int numLowestFloor = -2;
-        int numHighestFloor = 8;
-        ArrayList <Integer> numTotalFloors = new ArrayList<>();
-        int numEntryFloor = -3;
-        String vehicleType = "E";
-        int output;
+        int lowestFloor = -2;
+        int highestFloor = 8;
+        ArrayList <Integer> totalNumOfFloors = new ArrayList<>();
+        int entryFloor = 8;
+        String vehicleType = "V";
+        String output;
 
         /*
         Fill the list with available floors
          */
-        for (int i=numLowestFloor; i<numHighestFloor+1; i++){
+        for (int i=lowestFloor; i<highestFloor+1; i++){
             if (i == 0) {
                 continue;
             }
             else {
-                numTotalFloors.add(i);
+                totalNumOfFloors.add(i);
             }
         }
 
         /*
         Checks the closest parking space depending on vehicle type
          */
-        if (vehicleType == "P") {
-            output = numEntryFloor;;
-        } else if (vehicleType == "E" && numEntryFloor == numTotalFloors.get(numTotalFloors.size() -1)) {
-            output = numEntryFloor;
-        } else if (vehicleType == "E" && numEntryFloor < numTotalFloors.get(numTotalFloors.size() -1)) {
-            output = numTotalFloors.get(numTotalFloors.size() - 2);
-        } else if (vehicleType == "V" && numEntryFloor == numTotalFloors.get(0)) {
-            output = numEntryFloor;
-        } else if (vehicleType == "V" && numEntryFloor > numTotalFloors.get(0)) {
-            output = numTotalFloors.get(1);
+        if (lowestFloor < highestFloor) {
+            if (vehicleType == "P") {
+                output = Integer.toString(entryFloor);
+            } else if (vehicleType == "E" && entryFloor == totalNumOfFloors.get(totalNumOfFloors.size() - 1)) {
+                output = Integer.toString(entryFloor);
+            } else if (vehicleType == "E" &&
+                    entryFloor < totalNumOfFloors.get(totalNumOfFloors.size() - 1) &&
+                    entryFloor >= totalNumOfFloors.get(0)) {
+                output = Integer.toString(totalNumOfFloors.get(totalNumOfFloors.size() - 2));
+            } else if (vehicleType == "V" && entryFloor == totalNumOfFloors.get(0)) {
+                output = Integer.toString(entryFloor);
+            } else if (vehicleType == "V" &&
+                    entryFloor > totalNumOfFloors.get(0) &&
+                    entryFloor <= totalNumOfFloors.get(totalNumOfFloors.size() - 1)) {
+                output = Integer.toString(totalNumOfFloors.get(1));
+            } else {
+                output = "You can't enter the lot because the floor you're entering to does no exist.";
+            }
+        } else if (lowestFloor == highestFloor) {
+            output = Integer.toString(entryFloor);
         } else {
-            output = 0;
+            output = "The lowest floor of your building can't be higher than the highest floor.";
         }
 
         // Data Testing
