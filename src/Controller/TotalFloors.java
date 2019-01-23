@@ -4,10 +4,18 @@ package Controller;
 public class TotalFloors {
     private int lowerFloor;
     private int upperFloor;
+    private int [] floorArray;
 
     public TotalFloors(int lowerFloor, int upperFloor) {
         this.lowerFloor = lowerFloor;
         this.upperFloor = upperFloor;
+        int floorArrayMin = this.lowerFloor;
+        int floorArrayMax = this.upperFloor;
+        int floorArrayCount = floorArrayMax - floorArrayMin + 1;
+        int[] floorArray = new int [floorArrayCount];
+        for (int i = 0; i< floorArrayCount; i++, floorArrayMin++) {
+            floorArray[i] = floorArrayMin;
+        }
     }
 
     public int getLowerFloor () {
@@ -24,5 +32,9 @@ public class TotalFloors {
 
     public void setUpperFloor (int upperFloor) {
         this.upperFloor = upperFloor;
+    }
+
+    public int[] getFloorArray () {
+        return floorArray;
     }
 }
