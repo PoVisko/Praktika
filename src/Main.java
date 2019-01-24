@@ -20,7 +20,7 @@ public class Main {
 
         // Examples of input: p1, e-3, v4, etc.
         while (continueProgram) {
-            System.out.println("Enter vehicle type and entry floor number or q to quit program");
+            System.out.println("Enter vehicle type and entry floor number or q to quit");
             String input = sc.nextLine();
             if (input.toLowerCase().equals("q")){
                 continueProgram = false;
@@ -165,11 +165,11 @@ public class Main {
      */
     private static String printOutput(ArrayList<Integer> numOfTotalFloors, int entryFloor, String vehicleType) {
         if (isEntryFloorValid(entryFloor, numOfTotalFloors)) {
-            if ((determineVehicleType(vehicleType) == "p") ||
-                    (determineVehicleType(vehicleType) == "e" && isFloorHighestInLot(entryFloor, numOfTotalFloors)) ||
-                    (determineVehicleType(vehicleType) == "v" && isFloorLowestInLot(entryFloor, numOfTotalFloors))) {
+            if ((determineVehicleType(vehicleType).equals("p") ||
+                    (determineVehicleType(vehicleType).equals("e") && isFloorHighestInLot(entryFloor, numOfTotalFloors)) ||
+                    (determineVehicleType(vehicleType).equals("v") && isFloorLowestInLot(entryFloor, numOfTotalFloors)))) {
                 return Integer.toString(entryFloor);
-            } else if (determineVehicleType(vehicleType) == "e" && !isFloorHighestInLot(entryFloor, numOfTotalFloors)) {
+            } else if (determineVehicleType(vehicleType).equals("e") && !isFloorHighestInLot(entryFloor, numOfTotalFloors)) {
                 return Integer.toString(numOfTotalFloors.get(numOfTotalFloors.size() - 2));
             } else {
                 return Integer.toString(numOfTotalFloors.get(1));
