@@ -79,7 +79,7 @@ public class Main {
     /*
     Checks if a entry point is valid
      */
-    private static boolean isEntryFloorValid(int entryPoint, ArrayList<Integer> totalNumOfFloors) {
+    public static boolean isEntryFloorValid(int entryPoint, ArrayList<Integer> totalNumOfFloors) {
         if (totalNumOfFloors.contains(entryPoint) && entryPoint != 0) {
             return true;
         } else {
@@ -90,7 +90,7 @@ public class Main {
     /*
     Checks if lowest floor number is lower than the highest floor number
      */
-    private static boolean isLowestFloorValid(int lowestFloor, int highestFloor) {
+    public static boolean isLowestFloorValid(int lowestFloor, int highestFloor) {
         if (lowestFloor <= highestFloor) {
             return true;
         } else {
@@ -128,7 +128,7 @@ public class Main {
     /*
   Checks which vehicle type was entered in input
    */
-    private static String determineVehicleType(String vehicleType) {
+    public static String determineVehicleType(String vehicleType) {
         if (vehicleType.equals("p") || vehicleType.equals("d")) {
             return "p";
         } else if (vehicleType.equals("e")) {
@@ -141,7 +141,7 @@ public class Main {
     /*
     checks if the given floor is the highest in the parking lot
      */
-    private static boolean isFloorHighestInLot(int floor, ArrayList<Integer> totalNumOfFloors) {
+    public static boolean isFloorHighestInLot(int floor, ArrayList<Integer> totalNumOfFloors) {
         if (floor == totalNumOfFloors.get(totalNumOfFloors.size() - 1)) {
             return true;
         } else {
@@ -152,7 +152,7 @@ public class Main {
     /*
     checks if the given floor is the lowest in the parking lot
      */
-    private static boolean isFloorLowestInLot(int floor, ArrayList<Integer> totalNumOfFloors) {
+    public static boolean isFloorLowestInLot(int floor, ArrayList<Integer> totalNumOfFloors) {
         if (floor == totalNumOfFloors.get(0)) {
             return true;
         } else {
@@ -163,7 +163,7 @@ public class Main {
     /*
     prints output by using all the inputs and validation
      */
-    private static String printOutput(ArrayList<Integer> numOfTotalFloors, int entryFloor, String vehicleType) {
+    public static String printOutput(ArrayList<Integer> numOfTotalFloors, int entryFloor, String vehicleType) {
         if (isEntryFloorValid(entryFloor, numOfTotalFloors)) {
             if ((determineVehicleType(vehicleType).equals("p") ||
                     (determineVehicleType(vehicleType).equals("e") && isFloorHighestInLot(entryFloor, numOfTotalFloors)) ||
