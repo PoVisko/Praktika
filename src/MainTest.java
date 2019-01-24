@@ -35,4 +35,9 @@ class MainTest {
         assertFalse(testedClass.isEntryFloorValid(0, arrayList));
     }
 
+    @Test
+    void checkIfListIsNotNull () {
+        assertNotNull(testedClass.fillListWithFloorNumbers (-4, 4));
+    }
+
 }
