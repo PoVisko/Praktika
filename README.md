@@ -1,6 +1,6 @@
 # Praktika
 
-Java application
+Developed with java 1.8
 
 Program argument args[0] is the lowest floor in the parking lot
 
