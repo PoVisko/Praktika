@@ -8,11 +8,11 @@ Program argument args[1] is the highest floor in the parking lot
 
 Java main floorNumber floorNumber
 
-1) -2 8
+1) java main -2 8
 
-2) -4 4
+2) java main -4 4
 
-3) 1 6
+3) java main 1 6
 
 Input is made by providing the first letter of an entering vehicle type and the entry floor.
 
